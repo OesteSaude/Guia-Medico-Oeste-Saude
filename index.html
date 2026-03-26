@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Credenciada - Oeste Saúde</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+
+                <!-- Logo e Título -->
+                <div class="flex items-center gap-4">
+                    <img src="https://oesteims.com.br/wp-content/uploads/2024/05/logo-oeste-saude-horizontal-2-300x109.png"
+                         alt="Oeste Saúde"
+                         class="h-12 w-auto object-contain"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden items-center gap-3">
+                        <div class="bg-gradient-to-br from-[#003D58] to-[#00A8B0] p-3 rounded-xl shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-[#003D58]">Rede Credenciada</h1>
+                            <p class="text-sm text-gray-500">Oeste Saúde</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div class="flex gap-2">
+                        <button id="btnFiltroSP" class="px-4 py-2 bg-white border-2 border-[#00A8B0] text-[#003D58] rounded-lg hover:bg-[#00A8B0] hover:text-white font-bold shadow-md transition-all">SP</button>
+                        <button id="btnFiltroMS" class="px-4 py-2 bg-white border-2 border-[#00A8B0] text-[#003D58] rounded-lg hover:bg-[#00A8B0] hover:text-white font-bold shadow-md transition-all">MS</button>
+                        <button id="btnFiltroExclusivo" class="px-4 py-2 bg-white border-2 border-[#00A8B0] text-[#003D58] rounded-lg hover:bg-[#00A8B0] hover:text-white font-bold shadow-md transition-all">Exclusivo</button>
+                        <button id="btnGerarPDF" class="px-4 py-2 bg-gradient-to-r from-[#003D58] to-[#00A8B0] text-white rounded-lg hover:opacity-90 font-bold shadow-md transition-all flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            PDF
+                        </button>
+                    </div>
+
+                    <button id="btnGeolocalizacao" class="px-4 py-2 bg-gradient-to-r from-[#003D58] to-[#00A8B0] text-white rounded-lg hover:opacity-90 font-bold shadow-md transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="hidden sm:inline">Usar Localização</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Jornada de Vida -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+            <h2 class="text-lg font-bold text-[#003D58] mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#00A8B0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+                Encontre por cuidado especializado
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+
+                <div class="jornada-card bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 rounded-xl p-6 text-center" data-jornada="crianca">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <h3 class="font-bold text-gray-800">Criança</h3>
+                    <p class="text-xs text-gray-600 mt-1">Pediatria & Desenvolvimento</p>
+                </div>
+
+                <div class="jornada-card bg-gradient-to-br from-pink-50 to-pink-100 border-2 border-pink-200 rounded-xl p-6 text-center" data-jornada="mulher">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <h3 class="font-bold text-gray-800">Mulher</h3>
+                    <p class="text-xs text-gray-600 mt-1">Cuidado Integral</p>
+                </div>
+
+                <div class="jornada-card bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 rounded-xl p-6 text-center" data-jornada="mente">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                    <h3 class="font-bold text-gray-800">Mente</h3>
+                    <p class="text-xs text-gray-600 mt-1">Saúde Mental</p>
+                </div>
+
+                <div class="jornada-card bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-xl p-6 text-center" data-jornada="longevidade">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <h3 class="font-bold text-gray-800">Longevidade</h3>
+                    <p class="text-xs text-gray-600 mt-1">Movimento & Senior</p>
+                </div>
+
+                <div class="jornada-card bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-xl p-6 text-center" data-jornada="diagnostico">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                    <h3 class="font-bold text-gray-800">Diagnóstico</h3>
+                    <p class="text-xs text-gray-600 mt-1">Exames & Laboratórios</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="container mx-auto px-4 py-0">
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        Buscar por Nome
+                    </label>
+                    <input id="inputNome" type="text" placeholder="Digite o nome do prestador..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"/>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                        Especialidade
+                    </label>
+                    <select id="selectEspecialidade" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent font-semibold">
+                        <option value="">Todas as especialidades</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        Cidade
+                    </label>
+                    <select id="selectCidade" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent font-semibold">
+                        <option value="">Todas as cidades</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap gap-2" id="containerBadgesFiltro">
+                    <span class="text-sm text-gray-600 font-semibold mr-2">Filtro rápido:</span>
+                </div>
+                <button id="btnLimpar" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold transition-all flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                    Limpar Filtros
+                </button>
+            </div>
+        </div>
+
+        <!-- Info Resultados -->
+        <div id="infoResultados" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 hidden">
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div>
+                    <p class="font-semibold text-blue-700" id="textoResultados"></p>
+                    <p class="text-sm text-blue-600" id="textoLocalizacao"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão Urgência -->
+        <div id="botaoUrgencia" class="mb-6 hidden">
+            <button id="btnUrgencia" class="w-full px-6 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3 pulse-red">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                🚨 É URGÊNCIA? Clique aqui para hospitais mais próximos
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="flex flex-col items-center justify-center py-16 hidden">
+            <div class="loading-spinner"></div>
+            <p class="mt-4 text-gray-600 font-semibold">Carregando prestadores...</p>
+        </div>
+
+        <!-- Resultados -->
+        <div id="containerResultados" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        <!-- Estado Vazio -->
+        <div id="estadoVazio" class="text-center py-16 text-gray-500 hidden">
+            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-lg font-semibold">Nenhum prestador encontrado</p>
+            <p class="text-sm">Tente ajustar os filtros de busca</p>
+        </div>
+    </div>
+
+    <!-- Modal ADM (Ctrl+Shift+A) -->
+    <div id="modalAdm" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8">
+            <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+                <div class="flex items-center gap-4">
+                    <div class="bg-gradient-to-br from-slate-600 to-slate-800 p-4 rounded-xl shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800">Painel Administrativo</h2>
+                        <p class="text-gray-500">Gerenciamento da base de prestadores</p>
+                    </div>
+                </div>
+                <button id="btnFecharAdm" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-6 shadow-md">
+                    <p class="text-sm text-blue-600 font-semibold mb-2">PRESTADORES</p>
+                    <p class="text-4xl font-bold text-blue-700" id="statTotalPrestadores">0</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-6 shadow-md">
+                    <p class="text-sm text-green-600 font-semibold mb-2">ESPECIALIDADES</p>
+                    <p class="text-4xl font-bold text-green-700" id="statTotalEspecialidades">0</p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-6 shadow-md">
+                    <p class="text-sm text-orange-600 font-semibold mb-2">CIDADES</p>
+                    <p class="text-4xl font-bold text-orange-700" id="statTotalCidades">0</p>
+                </div>
+                <div class="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-xl p-6 shadow-md">
+                    <p class="text-sm text-red-600 font-semibold mb-2">HOSPITAIS</p>
+                    <p class="text-4xl font-bold text-red-700" id="statTotalHospitais">0</p>
+                </div>
+            </div>
+
+            <!-- Importar JSONs -->
+            <div class="space-y-4">
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L9 8m4-4v12"/>
+                        </svg>
+                        Importar Rede Credenciada
+                    </h3>
+                    <p class="text-gray-600 mb-4">Faça upload dos 3 arquivos JSON para atualizar a base</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <input type="file" id="inputRede" accept=".json" class="hidden"/>
+                            <button id="btnImportarRede" class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold shadow-md transition-all flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                <span id="statusRede">rede.json</span>
+                            </button>
+                        </div>
+                        <div>
+                            <input type="file" id="inputTipos" accept=".json" class="hidden"/>
+                            <button id="btnImportarTipos" class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold shadow-md transition-all flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                                </svg>
+                                <span id="statusTipos">tipos.json</span>
+                            </button>
+                        </div>
+                        <div>
+                            <input type="file" id="inputEspecialidades" accept=".json" class="hidden"/>
+                            <button id="btnImportarEspecialidades" class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold shadow-md transition-all flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                </svg>
+                                <span id="statusEspecialidades">especialidades.json</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="btnProcessarJsons" class="w-full mt-4 px-6 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Processar e Atualizar Base
+                    </button>
+                    <p class="text-xs text-gray-500 mt-2 text-center">Upload os 3 arquivos antes de processar</p>
+                </div>
+
+                <!-- Exportar Excel -->
+                <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-orange-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Exportar Dados
+                    </h3>
+                    <p class="text-gray-600 mb-4">Baixe a base de dados atual em formato Excel (.xlsx)</p>
+                    <button id="btnExportar" class="w-full px-6 py-4 bg-gradient-to-r from-slate-600 to-slate-800 text-white rounded-xl hover:from-slate-700 hover:to-slate-900 font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Exportar para Excel
+                    </button>
+                </div>
+
+                <!-- Limpar Cache -->
+                <div class="bg-gradient-to-r from-red-50 to-red-100 border border-red-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                        Limpar Cache
+                    </h3>
+                    <p class="text-gray-600 mb-4">Remove todos os dados salvos localmente (requer recarregar a página)</p>
+                    <button id="btnLimparCache" class="w-full px-6 py-4 bg-red-600 text-white rounded-xl hover:bg-red-700 font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"/>
+                        </svg>
+                        Limpar Todos os Dados
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Centro Médico -->
+    <div id="modalCentroMedico" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div class="bg-gradient-to-r from-[#003D58] to-[#00A8B0] p-6 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white p-3 rounded-xl shadow-lg">
+                        <svg class="w-8 h-8 text-[#003D58]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Centro Médico de Especialidades</h2>
+                        <p class="text-white text-opacity-90">Corpo clínico completo</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="btnGerarPDFModal" class="px-4 py-2 bg-white text-[#003D58] rounded-lg hover:bg-gray-100 font-bold shadow-md transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        PDF
+                    </button>
+                    <button id="btnFecharModalCentro" class="text-white hover:text-gray-200 transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 border-b">
+                <input type="text" id="inputBuscaMedico" placeholder="Buscar por médico ou especialidade..."
+                    class="w-full px-4 py-3 border-2 border-[#00A8B0] rounded-lg focus:ring-2 focus:ring-[#003D58] focus:border-transparent font-semibold"/>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6" id="listaMedicosCentro"></div>
+            <div class="p-4 bg-gray-50 border-t flex items-center justify-between">
+                <p class="text-sm text-gray-600">
+                    <span id="totalMedicosCentro" class="font-bold text-[#003D58]">102</span> profissionais encontrados
+                </p>
+                <p class="text-xs text-gray-500">📍 Rua Fagundes Varella, 185, Vila Lessa, Presidente Prudente</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts externos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Dados (arquivo grande com os prestadores) -->
+    <script src="dados.js"></script>
+
+    <!-- Lógica da aplicação -->
+    <script src="app.js"></script>
+
+</body>
+</html>

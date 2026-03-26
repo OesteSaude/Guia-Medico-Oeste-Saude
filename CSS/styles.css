@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --oeste-azul-escuro: #003D58;
+    --oeste-turqueza: #00A8B0;
+    --oeste-cinza-claro: #f8fafc;
+    --oeste-cinza-medio: #e2e8f0;
+    --oeste-cinza-escuro: #64748b;
+}
+
+* {
+    font-family: 'Sora', sans-serif;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f4f6;
+    border-top: 3px solid #475569;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse-red {
+    animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseRed {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.badge-filter {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.badge-filter:hover {
+    transform: scale(1.05);
+}
+
+.badge-filter.active {
+    ring: 2px;
+    ring-offset: 2px;
+}
+
+.jornada-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.jornada-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgba(0, 61, 88, 0.2);
+    border-color: #003D58;
+}
+
+.jornada-card.active {
+    border-color: #00A8B0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Centro Médico - Destaque Premium */
+.centro-medico-premium {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+    border: 3px solid #f59e0b !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.centro-medico-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+}
+
+.badge-complexo {
+    animation: pulseGold 2s infinite;
+}
+
+@keyframes pulseGold {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.02); }
+}
