@@ -1,72 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rede Credenciada - Oeste Saúde</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Log de Debug */
-        #debugLog {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 400px;
-            max-height: 400px;
-            background: #1a1a1a;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            border-radius: 8px;
-            padding: 15px;
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
-            overflow-y: auto;
-            z-index: 9999;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-        }
-
-        .log-entry {
-            margin: 5px 0;
-            padding: 5px;
-            border-left: 3px solid #00ff00;
-            padding-left: 10px;
-        }
-
-        .log-entry.error {
-            color: #ff4444;
-            border-left-color: #ff4444;
-        }
-
-        .log-entry.success {
-            color: #44ff44;
-            border-left-color: #44ff44;
-        }
-
-        .log-entry.warning {
-            color: #ffaa00;
-            border-left-color: #ffaa00;
-        }
-
-        .log-entry.info {
-            color: #00ccff;
-            border-left-color: #00ccff;
-        }
-
-        #debugToggle {
-            position: fixed;
-            bottom: 20px;
-            right: 430px;
-            background: #00ff00;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            z-index: 9999;
-        }
-    </style>
-       <meta charset="UTF-8">
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rede Credenciada - Oeste Saúde</title>
     
@@ -75,17 +10,19 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Credenciada - Oeste Saúde</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
-
-    <!-- Debug Log -->
-    <button id="debugToggle">📋 Debug</button>
-    <div id="debugLog"></div>
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between flex-wrap gap-4">
+                <!-- Logo -->
                 <div class="flex items-center gap-4">
                     <img src="https://oesteims.com.br/wp-content/uploads/2024/05/logo-oeste-saude-horizontal-2-300x109.png"
                          alt="Oeste Saúde"
@@ -103,124 +40,173 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Botões -->
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div class="flex gap-2">
+                        <button id="btnFiltroSP" class="px-4 py-2 bg-white border-2 border-[#00A8B0] text-[#003D58] rounded-lg hover:bg-[#00A8B0] hover:text-white font-bold shadow-md transition-all">SP</button>
+                        <button id="btnFiltroMS" class="px-4 py-2 bg-white border-2 border-[#00A8B0] text-[#003D58] rounded-lg hover:bg-[#00A8B0] hover:text-white font-bold shadow-md transition-all">MS</button>
+                        <button id="btnFiltroExclusivo" class="px-4 py-2 bg-white border-2 border-[#00A8B0] text-[#003D58] rounded-lg hover:bg-[#00A8B0] hover:text-white font-bold shadow-md transition-all">Exclusivo</button>
+                        <button id="btnGerarPDF" class="px-4 py-2 bg-gradient-to-r from-[#003D58] to-[#00A8B0] text-white rounded-lg hover:opacity-90 font-bold shadow-md transition-all flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            PDF
+                        </button>
+                    </div>
+
+                    <button id="btnGeolocalizacao" class="px-4 py-2 bg-gradient-to-r from-[#003D58] to-[#00A8B0] text-white rounded-lg hover:opacity-90 font-bold shadow-md transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="hidden sm:inline">Usar Localização</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Loading -->
-    <div id="loading" class="flex flex-col items-center justify-center py-16">
-        <div class="loading-spinner"></div>
-        <p class="mt-4 text-gray-600 font-semibold">Carregando aplicação...</p>
+    <!-- Jornada de Vida -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+            <h2 class="text-lg font-bold text-[#003D58] mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#00A8B0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+                Encontre por cuidado especializado
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                <div class="jornada-card bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 rounded-xl p-6 text-center" data-jornada="crianca">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <h3 class="font-bold text-gray-800">Criança</h3>
+                    <p class="text-xs text-gray-600 mt-1">Pediatria & Desenvolvimento</p>
+                </div>
+                <!-- ... outros cards ... -->
+            </div>
+        </div>
     </div>
 
+    <!-- Filtros -->
+    <div class="container mx-auto px-4 py-0">
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        Buscar por Nome
+                    </label>
+                    <input id="inputNome" type="text" placeholder="Digite o nome do prestador..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"/>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                        Especialidade
+                    </label>
+                    <select id="selectEspecialidade" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent font-semibold">
+                        <option value="">Todas as especialidades</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        Cidade
+                    </label>
+                    <select id="selectCidade" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent font-semibold">
+                        <option value="">Todas as cidades</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap gap-2" id="containerBadgesFiltro">
+                    <span class="text-sm text-gray-600 font-semibold mr-2">Filtro rápido:</span>
+                </div>
+                <button id="btnLimpar" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold transition-all flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                    Limpar Filtros
+                </button>
+            </div>
+        </div>
+
+        <!-- Info Resultados -->
+        <div id="infoResultados" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 hidden">
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div>
+                    <p class="font-semibold text-blue-700" id="textoResultados"></p>
+                    <p class="text-sm text-blue-600" id="textoLocalizacao"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão Urgência -->
+        <div id="botaoUrgencia" class="mb-6 hidden">
+            <button id="btnUrgencia" class="w-full px-6 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3 pulse-red">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                🚨 É URGÊNCIA? Clique aqui para hospitais mais próximos
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="flex flex-col items-center justify-center py-16 hidden">
+            <div class="loading-spinner"></div>
+            <p class="mt-4 text-gray-600 font-semibold">Carregando prestadores...</p>
+        </div>
+
+        <!-- Resultados -->
+        <div id="containerResultados" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        <!-- Estado Vazio -->
+        <div id="estadoVazio" class="text-center py-16 text-gray-500 hidden">
+            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-lg font-semibold">Nenhum prestador encontrado</p>
+            <p class="text-sm">Tente ajustar os filtros de busca</p>
+        </div>
+    </div>
+
+    <!-- Modais (Centro Médico, ADM, etc.) -->
+    <!-- ... (manter os modais existentes) ... -->
+
     <!-- Scripts -->
-    <script>
-        // ==================== DEBUG LOG ====================
-        const DebugLog = (() => {
-            const logContainer = document.getElementById('debugLog');
-            const toggleBtn = document.getElementById('debugToggle');
-            let isVisible = false;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
-            const log = (message, type = 'info') => {
-                const entry = document.createElement('div');
-                entry.className = `log-entry ${type}`;
-                const timestamp = new Date().toLocaleTimeString();
-                entry.textContent = `[${timestamp}] ${message}`;
-                logContainer.appendChild(entry);
-                logContainer.scrollTop = logContainer.scrollHeight;
-                console.log(`[${type.toUpperCase()}] ${message}`);
-            };
+    <!-- Dados -->
+    <script src="js/dados.js"></script>
 
-            toggleBtn.addEventListener('click', () => {
-                isVisible = !isVisible;
-                logContainer.style.display = isVisible ? 'block' : 'none';
-                toggleBtn.textContent = isVisible ? '✅ Debug' : '📋 Debug';
-            });
+    <!-- Módulos -->
+    <script src="js/modules/data.js"></script>
+    <script src="js/modules/filters.js"></script>
+    <script src="js/modules/render.js"></script>
+    <script src="js/modules/geolocation.js"></script>
+    <script src="js/modules/pdf.js"></script>
+    <script src="js/modules/admin.js"></script>
+    <script src="js/modules/modal.js"></script>
+    <script src="js/modules/events.js"></script>
 
-            logContainer.style.display = 'none';
-
-            return { log };
-        })();
-
-        // ==================== CARREGAMENTO DE ARQUIVOS ====================
-        const FileLoader = (() => {
-            const loadScript = (src) => {
-                return new Promise((resolve, reject) => {
-                    DebugLog.log(`Tentando carregar: ${src}`, 'info');
-                    const script = document.createElement('script');
-                    script.src = src;
-                    script.onload = () => {
-                        DebugLog.log(`✓ Carregado: ${src}`, 'success');
-                        resolve();
-                    };
-                    script.onerror = () => {
-                        DebugLog.log(`✗ ERRO ao carregar: ${src}`, 'error');
-                        reject(new Error(`Falha ao carregar ${src}`));
-                    };
-                    document.head.appendChild(script);
-                });
-            };
-
-            const loadCSS = (href) => {
-                return new Promise((resolve, reject) => {
-                    DebugLog.log(`Tentando carregar CSS: ${href}`, 'info');
-                    const link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = href;
-                    link.onload = () => {
-                        DebugLog.log(`✓ CSS carregado: ${href}`, 'success');
-                        resolve();
-                    };
-                    link.onerror = () => {
-                        DebugLog.log(`✗ ERRO ao carregar CSS: ${href}`, 'error');
-                        reject(new Error(`Falha ao carregar ${href}`));
-                    };
-                    document.head.appendChild(link);
-                });
-            };
-
-            return { loadScript, loadCSS };
-        })();
-
-        // ==================== INICIALIZAÇÃO ====================
-        (async () => {
-            try {
-                DebugLog.log('Iniciando aplicação...', 'info');
-                DebugLog.log(`URL atual: ${window.location.href}`, 'info');
-                DebugLog.log(`Diretório base: ${window.location.pathname}`, 'info');
-
-                // Carrega CSS
-                await FileLoader.loadCSS('styles.css');
-
-                // Carrega dados
-                await FileLoader.loadScript('js/dados.js');
-                DebugLog.log(`Dados carregados: ${window.DADOS_COMPLETOS?.prestadores?.length || 0} prestadores`, 'success');
-
-                // Carrega módulos
-                await FileLoader.loadScript('js/app.js');
-
-                // Inicializa app
-                if (typeof init === 'function') {
-                    init();
-                    DebugLog.log('Aplicação inicializada com sucesso!', 'success');
-                } else {
-                    DebugLog.log('Função init() não encontrada!', 'error');
-                }
-
-                document.getElementById('loading').style.display = 'none';
-
-            } catch (error) {
-                DebugLog.log(`ERRO CRÍTICO: ${error.message}`, 'error');
-                document.getElementById('loading').innerHTML = `
-                    <div class="text-center">
-                        <h2 class="text-2xl font-bold text-red-600 mb-4">Erro ao carregar aplicação</h2>
-                        <p class="text-gray-600 mb-4">${error.message}</p>
-                        <p class="text-sm text-gray-500">Abra o console (F12) ou clique em "Debug" para mais detalhes</p>
-                    </div>
-                `;
-            }
-        })();
-    </script>
+    <!-- Inicialização -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>
