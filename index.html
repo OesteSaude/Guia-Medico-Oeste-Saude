@@ -191,11 +191,11 @@
                 await FileLoader.loadCSS('styles.css');
 
                 // Carrega dados
-                await FileLoader.loadScript('js/dados.js');
+                await FileLoader.loadScript('JS/dados.js');
                 DebugLog.log(`Dados carregados: ${window.DADOS_COMPLETOS?.prestadores?.length || 0} prestadores`, 'success');
 
                 // Carrega módulos
-                await FileLoader.loadScript('js/app.js');
+                await FileLoader.loadScript('JS/app.js');
 
                 // Inicializa app
                 if (typeof init === 'function') {
