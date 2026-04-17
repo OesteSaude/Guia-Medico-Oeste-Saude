@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --oeste-azul-escuro: #003D58;
+  --oeste-turqueza: #00A8B0;
+  --oeste-cinza-claro: #f8fafc;
+  --oeste-cinza-medio: #e2e8f0;
+  --oeste-cinza-escuro: #64748b;
+}
+
+* {
+  font-family: 'Sora', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, var(--oeste-cinza-claro) 0%, var(--oeste-cinza-medio) 100%);
+  min-height: 100vh;
+  font-family: 'Sora';
+  color: var(--oeste-azul-escuro);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px 20px;
+  z-index: 1000;
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseRed {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+}
+
+.jornada-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border-top: 4px solid var(--oeste-turqueza);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.jornada-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.jornada-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.jornada-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.filtros {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filtro-input {
+  padding: 12px;
+  border: 1px solid var(--oeste-cinza-medio);
+  border-radius: 8px;
+}
+
+.filtro-input:focus {
+  border-color: var(--oeste-turqueza);
+  box-shadow: 0 0 0 3px rgba(0, 168, 176, 0.1);
+}
+
+.btn-limpar {
+  background: var(--oeste-turqueza);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-limpar:hover {
+  background: var(--oeste-azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.prestador-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--oeste-turqueza);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.prestador-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.prestador-card h3 {
+  color: var(--oeste-azul-escuro);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.prestador-card p {
+  color: var(--oeste-cinza-escuro);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.prestadores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.jornada-card.active {
+  border-color: var(--oeste-turqueza);
+  animation: pulseGold 2s infinite;
+}
+
+.centro-medico-premium {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 3px solid #f59e0b;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.badge-complexo {
+  animation: pulseGold 2s infinite;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #475569;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--oeste-cinza-escuro);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.badge-filter {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: var(--oeste-turqueza);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.badge-filter:hover {
+  transform: scale(1.05);
+}
+
+.badge-filter.active {
+  box-shadow: 0 0 0 2px var(--oeste-turqueza);
+}
+
+@media (max-width: 1024px) {
+  .jornada-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .prestadores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .jornada-grid {
+    grid-template-columns: 1fr;
+  }
+  .prestadores-grid {
+    grid-template-columns: 1fr;
+  }
+}
